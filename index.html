@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <script src="script.js"></script>
+    <title>404 - ERROR NOT FOUND</title>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div id="stars"></div>
+    <section id="all">
+    <div class="header-container">
+        <div class="header-left">
+            <p id="location">Hold tight, checking the stars…</p>
+        </div>
+        <div class="header-right">
+            <p>= ZXN0byBzZSBlcmVyZWNlIHVuIDEw</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="error-title">ERROR 404</h1>
+
+        <div class="terminal" id="terminal">
+            <div class="terminal-line"><p></p></div>
+        </div>
+
+        <div class="alarm-button-section">
+            <div><a href="/" class="btn-primary">RETURN TO BASE</a></div>
+        </div>
+    </div>
+
+
+    <div class="footer-container">
+        <div class="footer-left">
+            <p id="time"></p>
+        </div>
+        <div class="footer-right">
+            <p>ERROR 404</p>
+        </div>
+    </div>
+</section>
+    <script>
+        const starsContainer = document.getElementById('stars');
+        const starCount = 150;
+        const stars = [];
+
+        for (let NStars = 0; NStars < starCount; NStars++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+  
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+  
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (2 + Math.random() * 2) + 's';
+  
+            starsContainer.appendChild(star);
+            stars.push(star);
+
+            star.addEventListener('animationiteration', () => {
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+            });
+        }
+
+        window.onload = function() {
+            const terminal = document.getElementById('terminal');
+            const messages = [
+                "&gt;&gt;&gt INITIALIZING NAVIGATION SYSTEM...",
+                "&gt;&gt;&gt SCANNING COORDINATES...",
+                "&gt;&gt;&gt ERROR: LOCATION NOT FOUND",
+                "&gt;&gt;&gt STATUS: ASTRONAUT LOST IN SPACE",
+                "&gt;&gt;&gt ERROR CODE: 404"
+            ];
+
+            let currentMessage = 0;
+            let currentChar = 0;
+            let currentText = '';
+
+            function typeWriter() {
+                if (currentMessage < messages.length) {
+                    const line = messages[currentMessage];
+
+                    if (currentChar < line.length) {
+                        currentText = line.substring(0, currentChar + 1);
+
+                        const lines = terminal.querySelectorAll('.terminal-line');
+                        if (currentMessage < lines.length) {
+                            lines[currentMessage].innerHTML = "<p>" + currentText + '<span class="cursor">&#9619</span></p>';
+                        } else {
+                            const newLine = document.createElement('div');
+                            newLine.className = 'terminal-line';
+                            newLine.innerHTML = "<p>" + currentText + '<span class="cursor">&#9619</span></p>';
+                            terminal.appendChild(newLine);
+                        }
+
+                        currentChar++;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        const lines = terminal.querySelectorAll('.terminal-line');
+                        lines[currentMessage].innerHTML = "<p>" + line + "</p>";
+
+                        currentMessage++;
+                        currentChar = 0;
+                        currentText = '';
+                        setTimeout(typeWriter, 500);
+                    }
+                }
+            }
+
+            setTimeout(typeWriter, 1000);
+        };
+    </script>
+</body>
+</html>
