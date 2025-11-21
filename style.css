@@ -3,6 +3,8 @@ font-family: 'VT323', monospace;
 background-color: #000000;
 color: #00ff00;
 min-height: 100vh;
+min-width: 100vw;
+margin: 0;
 }
 
 p{
@@ -42,7 +44,7 @@ p{
   left: 0;
   width: 100%;
   height: 2px;
-  background: rgb(0, 255, 0);
+  background: #00ff00;
   pointer-events: none;
   z-index: 2;
 }
@@ -67,9 +69,9 @@ p{
   position: fixed;
   width: 4px;
   height: 4px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 50%;
-  animation: twinkle 4s ease-in-out infinite;
+  animation: twinkle 4s ease-in-out infinite; 
   z-index: 0;
 }
 
@@ -81,7 +83,7 @@ p{
 .header-left, .header-right {
 position: fixed;
 top: 20px;
-font-size: 20px;
+font-size: 22px;
 animation: glitch 0.1s infinite linear;
 }
 
@@ -125,7 +127,7 @@ max-width: 600px;
 width: 100%;
 margin: 30px;
 text-align: left;
-font-size: 20px;
+font-size: 25px;
 animation: glitch 0.1s infinite linear;
 }
 
@@ -143,7 +145,7 @@ margin-bottom: 10px;
 .footer-left, .footer-right {
 position: fixed;
 bottom: 20px;
-font-size: 20px;
+font-size: 22px;
 animation: glitch 0.1s infinite linear;
 }
 
@@ -156,20 +158,17 @@ right: 20px;
 text-align: right;
 }
 
-
-
 .alarm-button-section:hover {
 transform: scale(1.05);
 }
 
 .alarm-button-section {
     display: flex;
-    justify-content: center; /* centra horizontalmente */
-    align-items: center;     /* centra verticalmente si quieres */
-    padding: 30px;           /* espacio de 30px alrededor del botón */
-    box-sizing: border-box;  /* asegura que el padding no se recorte */
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
     animation: glitch 0.1s infinite linear;
-
 }
 
 .btn-primary {
@@ -181,43 +180,24 @@ transform: scale(1.05);
     font-weight: bold;
     border: 2px solid #00ff00;
     border-radius: 12px;
-    font-size: 20px;
-    box-sizing: border-box;
-    transition: transform 0.1s ease-in-out;
+    font-size: 22px;
+
 }
 
-.btn-primary:hover {
-    transform: translateY(-1px);
-}
+@media screen and (max-width: 1024px) and (min-width: 451px) {
 
-.btn-primary:active {
-    transform: translateY(2px);
-}
-
-
-#all{
-    display: flex;
-    flex-direction: column;
-}
-
-@media screen and (max-width: 1024px) and (min-width: 768px) {
-
-    
   .header-left, .header-right {
     position: relative;
     top: auto;
     left: auto;
     right: auto;
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
   }
 
-  .header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 20px;
+  .header-container{
+    padding-top: 25px;
+    width: 100vw;
   }
 
   .error-title {
@@ -226,10 +206,10 @@ transform: scale(1.05);
   }
 
   .terminal {
-    max-width: 90%;
+    max-width: 80%;
     padding: 25px;
     margin: 20px;
-    font-size: 18px;
+    font-size: 25px;
   }
 
   .footer-left, .footer-right {
@@ -238,27 +218,27 @@ transform: scale(1.05);
     left: auto;
     right: auto;
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
-    margin-top: 20px;
+    padding-bottom: 25px;
+    width: 100vw;
   }
 
   .btn-primary {
-    font-size: 18px;
+    font-size: 22px;
     padding: 12px 24px;
     margin: 20px;
   }
 
   .container {
-    padding: 20px;
-    min-height: 50vh;
-    width: 100vw;
+    padding: 15px 0;
+    width: 100%;
+    min-height: calc(100vh - 168px);
   }
 
   #all{
@@ -268,24 +248,19 @@ transform: scale(1.05);
   }
 }
 
-/* Phone Media Query (up to 767px) */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 450px) {
   .header-left, .header-right {
     position: relative;
     top: auto;
     left: auto;
     right: auto;
     text-align: center;
-    margin: 8px 0;
-    font-size: 16px;
+    font-size: 18px;
   }
 
-  .header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 15px;
+  .header-container{
+    padding-top: 25px;
+    width: 100vw;
   }
 
   .error-title {
@@ -294,10 +269,10 @@ transform: scale(1.05);
   }
 
   .terminal {
-    max-width: 90%;
+    max-width: 80%;
     padding: 20px;
-    margin: 15px 10px;
-    font-size: 16px;
+    margin: 15px 0;
+    font-size: 20px;
   }
 
   .terminal-line {
@@ -310,28 +285,28 @@ transform: scale(1.05);
     left: auto;
     right: auto;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-    margin-top: 15px;
+    padding-bottom: 25px;
+    width: 100vw;
   }
 
   .btn-primary {
-    font-size: 16px;
+    font-size: 18px;
     padding: 12px 20px;
     margin: 15px 10px;
     letter-spacing: 1px;
   }
 
   .container {
-    padding: 15px 10px;
+    padding: 15px 0;
     width: 100%;
-    min-height: 50vh;
+    min-height: calc(100vh - 152px);
   }
 
   .scan-line::before {
@@ -340,11 +315,5 @@ transform: scale(1.05);
 
   .scan-line::after {
     top: 40vh;
-  }
-
-  #all{
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
   }
 }
